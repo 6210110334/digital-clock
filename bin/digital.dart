@@ -11,6 +11,10 @@ class Digital {
     this.num = value;
   }
 
+  void reset() {
+    this.num = 0;
+  }
+
   String getDigital() {
     return num.toString();
   }

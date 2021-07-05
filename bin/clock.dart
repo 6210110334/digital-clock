@@ -7,11 +7,20 @@ class Clock {
   Clock(this.hours, this.min);
 
   void hoursInc() {
-    this.hours.inc();
+    if (this.hours.num < 24) {
+      this.hours.inc();
+    } else {
+      this.hours.reset();
+    }
   }
 
   void minInc() {
-    this.min.inc();
+    if (this.min.num < 60) {
+      this.min.inc();
+    } else {
+      this.min.reset();
+      this.hours.inc();
+    }
   }
 
   void setTime(int h, int m) {
