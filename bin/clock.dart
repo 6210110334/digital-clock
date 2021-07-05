@@ -16,6 +16,7 @@ class Clock {
       } else {
         hours.reset();
       }
+      print('Hours : ' + hours.getDigital());
     } else if (status == Status.Min) {
       if (min.num != 59) {
         min.inc();
@@ -23,6 +24,7 @@ class Clock {
         min.reset();
         hours.inc();
       }
+      print('Min : ' + min.getDigital());
     }
   }
 
@@ -33,6 +35,7 @@ class Clock {
       status = Status.Min;
     } else {
       status = Status.Ready;
+      print(getTime());
     }
   }
 

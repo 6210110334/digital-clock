@@ -8,19 +8,20 @@ List<String> cmds = [
   'set',
   'inc',
   'set',
+  'set',
   'inc',
-  'inc',
-  'set'
+  'inc'
 ];
 void main(List<String> arguments) {
-  Clock time = Clock(Digital(), Digital());
+  final Clock time = Clock(Digital(), Digital());
   cmds.forEach((cmd) {
     if (cmd.substring(0, 2) == 'on') {
-      time.setTime(12, 0);
+      time.setTime(18, 0);
     } else if (cmd == 'set') {
       time.set();
     } else if (cmd == 'inc') {
       time.inc();
     }
   });
+  print('Final time : ' + time.getTime());
 }
