@@ -3,11 +3,9 @@ import 'digital.dart';
 enum Status { Hours, Min, Ready }
 
 class Clock {
-  Digital hours;
-  Digital min;
+  Digital hours = Digital();
+  Digital min = Digital();
   Status status = Status.Ready;
-
-  Clock(this.hours, this.min);
 
   void inc() {
     if (status == Status.Hours) {
