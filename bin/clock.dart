@@ -1,31 +1,44 @@
 import 'digital.dart';
 
+enum Status { Hours, Min, Ready }
+
 class Clock {
   Digital hours;
   Digital min;
+  Status status = Status.Ready;
 
   Clock(this.hours, this.min);
 
-  void hoursInc() {
-    if (this.hours.num < 24) {
-      this.hours.inc();
-    } else {
-      this.hours.reset();
+  void inc() {
+    if (status == Status.Hours) {
+      if (hours.num != 23) {
+        hours.inc();
+      } else {
+        hours.reset();
+      }
+    } else if (status == Status.Min) {
+      if (min.num != 59) {
+        min.inc();
+      } else {
+        min.reset();
+        hours.inc();
+      }
     }
   }
 
-  void minInc() {
-    if (this.min.num < 60) {
-      this.min.inc();
+  void set() {
+    if (status == Status.Ready) {
+      status = Status.Hours;
+    } else if (status == Status.Hours) {
+      status = Status.Min;
     } else {
-      this.min.reset();
-      this.hours.inc();
+      status = Status.Ready;
     }
   }
 
   void setTime(int h, int m) {
-    this.hours.setDigital(h);
-    this.min.setDigital(m);
+    hours.setDigital(h);
+    min.setDigital(m);
   }
 
   String getTime() {

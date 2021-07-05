@@ -17,6 +17,10 @@ void main(List<String> arguments) {
   cmds.forEach((cmd) {
     if (cmd.substring(0, 2) == 'on') {
       time.setTime(12, 0);
+    } else if (cmd == 'set') {
+      time.set();
+    } else if (cmd == 'inc') {
+      time.inc();
     }
   });
 }
